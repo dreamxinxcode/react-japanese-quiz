@@ -1,7 +1,7 @@
 import React from 'react'
 import Choice from './Choice';
 
-const chars = {
+export const chars = {
 
   あ: 'a',
   い: 'i',	
@@ -262,9 +262,29 @@ const chars = {
 }
 
 function ChoicesArea() {
+
+  const randIndex = () => {
+    const min = 0;
+    const max = Object.keys(chars).length - 1;
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  const randChar = () => {
+    const keys = Object.keys(chars);
+    const char = keys[Number(randIndex)]
+    return { char: chars[char] }
+  }
+
+  let charsArr = [];
+
+  for (let i = 0; i > 5; i++) {
+    charsArr.push(randChar);
+  }
+
+
   return (
     <div id='choices-area'>
-      <Choice />
+      
     </div>
   )
 }
